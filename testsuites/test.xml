@@ -1,12 +1,25 @@
-<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd" >
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite name="Suite" parallel="none">
+    <parameter name="baseUrl" value="https://practicesoftwaretesting.com"/>
 
-<suite name="Example Suite" verbose="1" >
-    <listeners>
-        <listener class-name="com.vimalselvam.testng.listener.ExtentTestNgFormatter"/>
-    </listeners>
-    <test name="Regression1">
+    <test name="Chrome Tests">
+        <parameter name="browserName" value="Chrome"/>
         <classes>
-            <class name="com.selenium.SampleTest"/>
+            <class name="test.java.selenium.tests.SampleTest"/>
+        </classes>
+    </test>
+
+    <test name="Firefox Tests">
+        <parameter name="browserName" value="Firefox"/>
+        <classes>
+            <class name="test.java.selenium.tests.SampleTest"/>
+        </classes>
+    </test>
+
+    <test name="Edge Tests">
+        <parameter name="browserName" value="Edge"/>
+        <classes>
+            <class name="test.java.selenium.tests.SampleTest"/>
         </classes>
     </test>
 </suite>
