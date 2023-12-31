@@ -10,6 +10,7 @@ import org.openqa.selenium.firefox.FirefoxOptions;
 import org.openqa.selenium.firefox.FirefoxProfile;
 import java.util.concurrent.TimeUnit;
 import pages.HomePage;
+import pages.shared.HeaderSection;
 
 import java.net.MalformedURLException;
 import java.net.URL;
@@ -44,7 +45,7 @@ public class Browser {
                 System.out.println("Invalid browser passed in: " + browser);
                 break;
         }
-    
+        _driver.manage().window().maximize();
         _driver.manage().timeouts().implicitlyWait(5, TimeUnit.SECONDS);
     }
 
@@ -66,6 +67,10 @@ public class Browser {
 
     private void setBaseUrl(String baseUrl) {
         this.baseUrl = baseUrl;
+    }
+
+    public String getCurrentUrl() {
+        return _driver.getCurrentUrl();
     }
 
     public String getBaseUrl() {

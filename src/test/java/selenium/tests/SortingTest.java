@@ -4,7 +4,7 @@ import org.testng.annotations.*;
 import org.testng.Assert;
 import selenium.helper.Browser;
 
-public class SampleTest {
+public class SortingTest {
 
     Browser browser;
 

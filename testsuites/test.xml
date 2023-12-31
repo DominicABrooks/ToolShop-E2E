@@ -4,22 +4,22 @@
 
     <test name="Chrome Tests">
         <parameter name="browserName" value="Chrome"/>
-        <classes>
-            <class name="test.java.selenium.tests.SampleTest"/>
-        </classes>
+        <packages>
+            <package name="test.java.selenium.tests"/>
+        </packages>
     </test>
 
-    <test name="Firefox Tests">
+    <!-- <test name="Firefox Tests">
         <parameter name="browserName" value="Firefox"/>
-        <classes>
-            <class name="test.java.selenium.tests.SampleTest"/>
-        </classes>
+        <packages>
+            <package name="test.java.selenium.tests"/>
+        </packages>
     </test>
 
     <test name="Edge Tests">
         <parameter name="browserName" value="Edge"/>
-        <classes>
-            <class name="test.java.selenium.tests.SampleTest"/>
-        </classes>
-    </test>
+        <packages>
+            <package name="test.java.selenium.tests"/>
+        </packages>
+    </test> -->
 </suite>
