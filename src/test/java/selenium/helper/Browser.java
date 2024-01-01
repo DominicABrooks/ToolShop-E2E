@@ -10,6 +10,7 @@ import org.openqa.selenium.firefox.FirefoxOptions;
 import org.openqa.selenium.firefox.FirefoxProfile;
 import java.util.concurrent.TimeUnit;
 import pages.HomePage;
+import pages.ContactPage;
 import pages.shared.HeaderSection;
 
 import java.net.MalformedURLException;
@@ -84,6 +85,13 @@ public class Browser {
         return homePage;
     }
 
+    public ContactPage ContactPage() {
+        if (contactPage == null) {
+            contactPage = new ContactPage(this);
+        }
+        return contactPage;
+    }
+
     // Public properties
     public WebDriver _driver;
 
@@ -91,4 +99,5 @@ public class Browser {
     private String browserName;
     private String baseUrl;
     private HomePage homePage;
+    private ContactPage contactPage;
 }
