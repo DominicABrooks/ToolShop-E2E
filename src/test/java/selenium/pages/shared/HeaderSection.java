@@ -59,6 +59,7 @@ public class HeaderSection extends Element {
     }
 
     public void clickCategoryLink(String categoryName) {
+        clickCategoriesDropDown();
         for (WebElement categoryLink : categoryLinks) {    
             if (categoryLink.getText().trim().equalsIgnoreCase(categoryName.trim())) {
                 categoryLink.click();

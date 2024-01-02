@@ -2,20 +2,30 @@ package selenium.helper;
 
 import io.github.bonigarcia.wdm.WebDriverManager;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebDriverException;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
 import org.openqa.selenium.edge.EdgeDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.firefox.FirefoxOptions;
 import org.openqa.selenium.firefox.FirefoxProfile;
+import org.openqa.selenium.TakesScreenshot;
+import org.openqa.selenium.OutputType;
 import java.util.concurrent.TimeUnit;
 import pages.HomePage;
 import pages.ContactPage;
 import pages.LoginPage;
 import pages.shared.HeaderSection;
 
+import java.io.File;
+import java.io.IOException;
 import java.net.MalformedURLException;
 import java.net.URL;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.StandardCopyOption;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 import java.util.concurrent.TimeUnit;
 
 public class Browser {
@@ -73,6 +83,26 @@ public class Browser {
 
     public String getCurrentUrl() {
         return _driver.getCurrentUrl();
+    }
+
+    public void takeScreenshot(String screenshotName) {
+        try {
+            TakesScreenshot screenshotDriver = (TakesScreenshot) _driver;
+            File screenshotFile = screenshotDriver.getScreenshotAs(OutputType.FILE);
+
+            // Generate a timestamped screenshot name
+            String timestamp = LocalDateTime.now().format(DateTimeFormatter.ofPattern("yyyyMMdd_HHmmss"));
+            String finalScreenshotName = screenshotName + "_" + timestamp + ".png";
+
+            String screenshotDestination = finalScreenshotName;
+
+            // Copy the screenshot to the destination
+            Files.copy(screenshotFile.toPath(), Path.of(screenshotDestination), StandardCopyOption.REPLACE_EXISTING);
+
+            System.out.println("Screenshot captured: " + finalScreenshotName);
+        } catch (WebDriverException | IOException e) {
+            e.printStackTrace();
+        }
     }
 
     public String getBaseUrl() {

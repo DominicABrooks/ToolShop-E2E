@@ -66,7 +66,6 @@ public class HeaderTest {
     }
 
     private void clickLinkAndAssertUrl(String linkText, String expectedUrl) {
-        headerSection.clickCategoriesDropDown();
         headerSection.clickCategoryLink(linkText);
         waitForUrl(expectedUrl);
         Assert.assertEquals(browser.getCurrentUrl(), expectedUrl);

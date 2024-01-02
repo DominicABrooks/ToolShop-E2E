@@ -19,6 +19,12 @@ public class ContactTest {
     public void firstNameFieldTest() throws InterruptedException {
         browser.navigateTo("https://practicesoftwaretesting.com/#/contact");
         browser.ContactPage().setFirstNameField("First");
+        browser.ContactPage().setLastNameField("Last");
+        browser.ContactPage().setEmailField("Email");
+        browser.ContactPage().selectSubject("Warranty");
+        browser.ContactPage().setMessageField("This is a test message.");
+        browser.ContactPage().clickSubmitButton();
+        browser.takeScreenshot("example.jpg");
         // Assert.assertEquals(assert something);
     }
 
