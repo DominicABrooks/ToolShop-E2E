@@ -23,6 +23,7 @@ import java.net.MalformedURLException;
 import java.net.URL;
 import java.nio.file.Files;
 import java.nio.file.Path;
+import java.nio.file.Paths;
 import java.nio.file.StandardCopyOption;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
@@ -94,7 +95,14 @@ public class Browser {
             String timestamp = LocalDateTime.now().format(DateTimeFormatter.ofPattern("yyyyMMdd_HHmmss"));
             String finalScreenshotName = screenshotName + "_" + timestamp + ".png";
 
-            String screenshotDestination = finalScreenshotName;
+            // Default to the current working directory
+            String screenshotDestination = "screenshots/" + finalScreenshotName;
+
+            // Create the directory if it doesn't exist
+            Path directoryPath = Paths.get("screenshots");
+            if (!Files.exists(directoryPath)) {
+                Files.createDirectories(directoryPath);
+            }
 
             // Copy the screenshot to the destination
             Files.copy(screenshotFile.toPath(), Path.of(screenshotDestination), StandardCopyOption.REPLACE_EXISTING);
