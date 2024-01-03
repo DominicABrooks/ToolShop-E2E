@@ -20,12 +20,17 @@ public class ContactTest {
         browser.navigateTo("https://practicesoftwaretesting.com/#/contact");
         browser.ContactPage().setFirstNameField("First");
         browser.ContactPage().setLastNameField("Last");
-        browser.ContactPage().setEmailField("Email");
+        browser.ContactPage().setEmailField("Email@host.com");
         browser.ContactPage().selectSubject("Warranty");
-        browser.ContactPage().setMessageField("This is a test message.");
+        browser.ContactPage().setMessageField("ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789!@#$%^&*() ");
+        String filePath = System.getProperty("user.dir") + "/src/test/java/resources/files/normal_test.txt";
+        browser.ContactPage().uploadFile(filePath);
         browser.ContactPage().clickSubmitButton();
+
+        boolean success = browser.ContactPage().doesSuccessMessageExist();
+        Assert.assertTrue(success);
+
         browser.takeScreenshot("example.jpg");
-        // Assert.assertEquals(assert something);
     }
 
     @AfterClass

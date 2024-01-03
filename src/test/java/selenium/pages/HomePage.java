@@ -25,7 +25,7 @@ public class HomePage extends Page {
         searchButton.click();
     }
 
-    @FindBy(css = "h3[_ngcontent-ng-c345920939='']")
+    @FindBy(css = "div.col-md-9 > h3")
     private WebElement searchForText;
 
     // this element only appears after the search button is clicked

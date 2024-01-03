@@ -3,11 +3,17 @@ package pages;
 import selenium.helper.Browser;
 import org.openqa.selenium.support.ui.Select;
 
+import java.time.Duration;
 import java.util.List;
+import java.util.NoSuchElementException;
+import java.util.concurrent.TimeoutException;
 
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.FindBys;
+import org.openqa.selenium.By;
 import pages.shared.Page;
 
 public class ContactPage extends Page {
@@ -36,11 +42,16 @@ public class ContactPage extends Page {
     @FindBy(css = "textarea[formcontrolname='message'][data-test='message']")
     private WebElement messageTextField;
 
+    @FindBy(css = "input[formcontrolname='attachment'][data-test='attachment']")
+    private WebElement attachmentInput;
+
     @FindBy(css = "input[data-test='contact-submit'][type='submit']")
     private WebElement submitButton;
 
+    @FindBy(css = "//div[contains(@class, 'alert-success') and contains(text(), 'Thanks for your message!')]")
+    private WebElement successMessage;
+
     public void selectSubject(String subjectValue) {
-        clickSubjectDropdownButton();
         for (WebElement option : subjectOptions) {
             if (option.getText().trim().equalsIgnoreCase(subjectValue.trim())) {
                 option.click();
@@ -66,11 +77,16 @@ public class ContactPage extends Page {
         messageTextField.sendKeys(message);
     }
 
-    public void clickSubjectDropdownButton() {
-        submitButton.click();
+    public void uploadFile(String filePath) {
+        attachmentInput.sendKeys(filePath);
     }
 
     public void clickSubmitButton() {
         submitButton.click();
     }
+
+    public boolean doesSuccessMessageExist() {
+        return driver.findElements(By.xpath("//div[contains(@class, 'alert-success') and contains(text(), 'Thanks for your message!')]")).size() > 0;
+    }
+    
 }

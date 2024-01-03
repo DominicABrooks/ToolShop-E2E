@@ -1,0 +1,4 @@
+<!--
+  Purpose: This file is intended for conducting robustness testing of the file upload feature on the /#/contact page.
+  Description: The TXT file is employed to assess the resilience and reliability of the file upload functionality, ensuring the system's stability when given files over 0 kb
+-->
