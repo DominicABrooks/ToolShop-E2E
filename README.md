@@ -13,7 +13,7 @@
 - **JDK**
 - **Maven**
 
-# In terminal
+## In terminal
 ```git clone https://github.com/DominicABrooks/ToolShop-E2E```
 
 ```cd ToolShop-E2E```
