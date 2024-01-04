@@ -1,5 +1,7 @@
 # Selenium TestNG Framework for [practicesoftwaretesting](https://www.practicesoftwaretesting.com)
 
+For detailed information, refer to the [Test Strategy for ToolShop Demo document](https://docs.google.com/document/d/1t_n6mJWAyy8a90CVP1g_kei-Ajipq4Z7rUcjSFno_90/edit?usp=sharing).
+
 ## Stack & Libraries
 
 - **Java**
@@ -34,4 +36,3 @@ Ensure Maven is not already installed on your system. Use the appropriate method
 
 ### Once Maven is installed, run the following command to build and install the project
 ```mvn install```
-
